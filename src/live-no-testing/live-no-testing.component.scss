@@ -1,0 +1,75 @@
+.search-icon {
+  position: absolute;
+  top: 7px;
+  left: 8px;
+  z-index: 100;
+  cursor: pointer;
+  color: #0088cc !important;
+}
+.searchInput {
+  padding-left: 33px;
+}
+// html.dark .checkbox-primary label:before, .checkbox-primary label:before {
+//      background: none!important;
+//      border-color: none!important;
+// }
+
+.checkbox-custom input[type="checkbox"]:checked + label:after {
+  right: 15px !important;
+  left: auto !important;
+}
+.checkbox-custom label:before {
+  right: 15px !important;
+  left: auto !important;
+}
+.form-row > .col,
+.form-row > [class*="col-"] {
+  padding-right: none !important;
+  padding-left: none !important;
+}
+.checkbox-custom {
+  position: relative;
+  padding: 0 0 0 0 !important;
+  margin-bottom: 7px;
+  margin-top: 0;
+}
+.checkbox-custom input[type="checkbox"] {
+  right: 18px !important;
+  left: auto !important;
+}
+
+.scroll-content {
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 80%;
+}
+.checkbox-custom label {
+  margin-bottom: 8px !important;
+}
+
+html body .tabs .nav-tabs .nav-link,
+html.dark body .tabs .nav-tabs .nav-link,
+html body .tabs .nav-tabs .nav-link:active,
+html.dark body .tabs .nav-tabs .nav-link:active {
+  color: #0088cc;
+}
+html body .tabs .nav-tabs li.active .nav-link,
+html.dark body .tabs .nav-tabs li.active .nav-link {
+  border-top-color: #0088cc !important;
+  color: #0088cc;
+}
+.radio-custom label:before {
+  left:auto!important;
+  right: 0;
+
+}
+.radio-custom input[type="radio"]:checked + label:after {
+  left: auto!important;
+  right: 4px;
+}
+.radio-custom[_ngcontent-c4] label[_ngcontent-c4]:before {
+  right: 0;
+}
+.radio-custom:last-child, .radio-custom:last-of-type {
+  margin-bottom: 13px!important;
+}

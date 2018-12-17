@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-lg-12 col-xl-12">
+    <div class="tabs">
+      <ul class="nav nav-tabs tabs-primary">
+        <li class="nav-item"><a class="nav-link active" href="#edit" data-toggle="tab">Add New Connec</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="edit" class="tab-pane active">
+          <div class="p-3">
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label for="accountname">Senders</label>
+                  <div class="input-group btn-group">
+                    <select data-plugin-selectTwo class="form-control populate" formControlName="senderId" name="sender"
+                      id="ms_example4">
+                      <option *ngFor="let list of sendersList" value="{{list.id}}">{{ list.sender_name }}</option>
+                    </select>
+                    <span class="input-group-addon"> <i class="fa fa-th-list"></i> </span>
+                  </div>
+                  <br />
+                  <label for="accountname">Text</label>
+                  <textarea class="form-control" formControlName="text" rows="3" id="textareaDefault"></textarea>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <div class="checkbox-custom checkbox-primary">
+                    <input type="checkbox" [(ngModel)]="selectedAll" [ngModelOptions]="{ standalone: true }" name="name"
+                      id="allneighbourhoods" (change)="selectAll($event.target.checked)" />
+                    <label for="allneighbourhoods">Country(MCC)/Network(MNC)</label>
+                  </div>
+                  <div class="input-group">
+                    <input type="text" [(ngModel)]="searchText" [ngModelOptions]="{ standalone: true }" name="searchText"
+                      class="form-control searchInput" />
+                    <a class="search-icon"> <i class="fa fa-search" id="myimage"></i> </a>
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary" type="button"><i class="fa fa-plus"></i></button>
+                    </span>
+                  </div>
+                  <br />
+
+                  <div class="scroll-content">
+                    <div *ngFor="let a of (networkList | filter: searchText)">
+                      <div class="checkbox-custom checkbox-primary">
+                        <input type="checkbox" [(ngModel)]="a.selected" name="name1" id="{{a._id}}" [ngModelOptions]="{ standalone: true }"
+                          (change)="checkIfAllSelected(a._id, $event.target.checked)" />
+                        <label for="{{a._id}}">{{ a.mcc_code }}/{{ a.mnc_code }}</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <div>
+                    <!--<div class="checkbox-custom checkbox-primary">
+                       <input type="checkbox"
+                      [(ngModel)]="selectedAll1" 
+                      [ngModelOptions]="{ standalone: true }"
+                       name="name2"
+                        id="router" 
+                        (change)="selectAll1()" disabled /> -->
+                    <label for="router">Supplier</label>
+                  </div>
+                  <div class="input-group">
+                    <input type="text" [(ngModel)]="searchText1" [ngModelOptions]="{ standalone: true }" name="searchText1"
+                      class="form-control searchInput" />
+                    <a class="search-icon"> <i class="fa fa-search" id="myimage"></i> </a>
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary" type="button"><i class="fa fa-plus"></i></button>
+                    </span>
+                  </div>
+                  <br />
+                  <div *ngFor="let b of (supplier | filter: searchText1)">
+                    <!-- <div class="checkbox-custom checkbox-primary">
+                      <input type="checkbox" name="name3" id="{{b.id}}" (change)="checkIfAllSelected1(b.id, $event.target.checked)" />
+                      <label for="{{b.id}}">{{ b.username }}</label>
+                    </div> -->
+                    <div  class="radio-custom radio-primary">
+                      <input 
+                      type="radio" 
+                      id="{{b.id}}" 
+                      [value]="b.id"
+                      name="name"
+                      [(ngModel)]="connectionId" 
+                      [ngModelOptions]="{ standalone: true }">
+                      <label style="margin-right: 27px;" for="{{b.id}}">{{ b.username }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 text-center mt-3"></div>
+                <div class=" col-lg-4 text-right mt-3">
+                  <button [disabled]="myForm.pristine || myForm.invalid" class="btn btn-primary modal-confirm">
+                    Run
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
